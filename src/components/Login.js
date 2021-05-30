@@ -1,28 +1,30 @@
 import React, { useRef, useContext } from "react";
 // import HappyContext from "../context/happyContext";
-import api from '../utils/api'
+import api from "../utils/api";
+import { useHistory } from "react-router-dom";
 
-export default function Login(){
-  const emailRef = useRef()
-  const passwordRef =  useRef()
+export default function Login() {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const history = useHistory();
 
-  const handleSubmit = (e)=>{
-    e.preventDefault()
-    const creds = 
-    {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const creds = {
       email: emailRef.current.value,
-      password: passwordRef.current.value
-    }
-   
-    const response = api.submitLoginCreds(creds).then(res => {
-      console.log(res)
-    })
-  
-    // console.log('submitted')
-    // console.log('EMAIL IS: ',emailRef.current.value)
-    // console.log('Password IS: ',passwordRef.current.value)
-  }
+      password: passwordRef.current.value,
+    };
 
+    api.submitLoginCreds(creds).then((res) => {
+      console.log("STATUS ", res);
+      if (res.status === 200) {
+        history.push("/dashboard");
+      }
+    }).catch((error)=>{
+      history.push("/unauthorized");
+      console.log(error.response)
+    })
+  };
 
   ////
   return (
