@@ -1,12 +1,12 @@
 import React, { useReducer } from "react";
 import HappyContext from "./happyContext";
 import HappyReducer from "./happyReducer";
-import { SEARCH_RESULTS } from "./actions";
+import { SET_HAPPY_RECORDS } from "./actions";
 
 function HappyState(props) {
   // set the inital state for all vars in the state
   const initalState = {
-    searchResults: [],
+    happyRecords: [],
     
   };
 
@@ -16,9 +16,9 @@ function HappyState(props) {
   // FUNCTIONS HERE
 
   //get the restuls from a user search
-  const setSearchResultsFromAPI = (results) => {
+  const setHappyRecords = (results) => {
     dispatch({
-      type: SEARCH_RESULTS,
+      type: SET_HAPPY_RECORDS,
       payload: results,
     });
   };
@@ -27,7 +27,7 @@ function HappyState(props) {
     <HappyContext.Provider
       value={{
         // reutrn state values or functions listed here
-        searchResults: state.searchResults,
+        happyRecords: state.happyRecords,
        
       }}
     >

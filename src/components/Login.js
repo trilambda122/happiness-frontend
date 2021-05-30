@@ -18,6 +18,7 @@ export default function Login() {
     api.submitLoginCreds(creds).then((res) => {
       console.log("STATUS ", res);
       if (res.status === 200) {
+        
         history.push("/dashboard");
       }
     }).catch((error)=>{

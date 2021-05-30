@@ -1,3 +1,3 @@
 import {createContext} from 'react'
-const happyContext = createContext();
-export default happyContext
+const HappyContext = createContext();
+export default HappyContext
