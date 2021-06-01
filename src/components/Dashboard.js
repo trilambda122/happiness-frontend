@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import api from "../utils/api";
 import HappyCard from '../components/HappyCard'
+import AddRecord from '../components/AddRecord'
 // import HappyContext from '../context/happyContext'
 
 // import SoundtrackContext from '../context/soundtrackContext'
@@ -30,7 +31,9 @@ export default function Dashboard() {
   
   return (
     <div>
-      <h1>DASHBAORD</h1>
+     
+      <h1>DASHBOARD</h1>
+      <AddRecord></AddRecord>
       { loading ? <div>Loading...</div> : hasError ? <div>ERROR!!</div> : happyRecords && happyRecords.happyItems.map((item)=>{
           return <HappyCard key={item._id} happyRecord={item}></HappyCard>
       })

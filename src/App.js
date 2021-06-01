@@ -5,6 +5,7 @@ import HappyState from "./context/happyState";
 import "./App.css";
 import Dashboard from "./components/Dashboard";
 import Unauthorized from "./components/Unauthorized";
+import AddRecord from "./components/AddRecord";
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
           </Route>
           <Route exact path="/dashboard">
             <Dashboard />
+          </Route>
+          <Route exact path="/add">
+            <AddRecord />
           </Route>
           <Route exact path="/unauthorized">
             <Unauthorized />
