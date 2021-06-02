@@ -26,7 +26,6 @@ export default function HappyCard(props) {
 
   const returnSleepColor = () => {
     const hours = props.happyRecord.sleepHours;
-    console.log(hours)
     switch (true) {
       case hours < 3:
         return "rounded-circle border border-white bg-danger";
@@ -35,7 +34,23 @@ export default function HappyCard(props) {
       case hours >= 7:
         return "rounded-circle border border-white bg-success";
       default:
-        return 'rounded-circle border border-white'
+        return "rounded-circle border border-white";
+    }
+  };
+
+  const returnExceriseColor = () => {
+    const level = props.happyRecord.exerciseLevel;
+    switch (true) {
+      case (level === "low"):
+        return "rounded-circle border border-white bg-danger";
+      case (level === "med"):
+        return "rounded-circle border border-white bg-warning";
+      case (level === "high"):
+        return "rounded-circle border border-white bg-success";
+        case (level === "none"):
+          return "rounded-circle border border-white bg-light";
+      default:
+        return "rounded-circle border border-white bg-primary";
     }
   };
 
@@ -54,7 +69,7 @@ export default function HappyCard(props) {
                   alt="Bootstrap"
                   width="48"
                   height="48"
-                  className="rounded-circle border border-white bg-success"
+                  className={returnExceriseColor()}
                 />
               )}
 
