@@ -24,6 +24,21 @@ export default function HappyCard(props) {
     }
   };
 
+  const returnSleepColor = () => {
+    const hours = props.happyRecord.sleepHours;
+    console.log(hours)
+    switch (true) {
+      case hours < 3:
+        return "rounded-circle border border-white bg-danger";
+      case hours <= 6:
+        return "rounded-circle border border-white bg-warning";
+      case hours >= 7:
+        return "rounded-circle border border-white bg-success";
+      default:
+        return 'rounded-circle border border-white'
+    }
+  };
+
   return (
     <div className="col m-5">
       <div
@@ -39,11 +54,11 @@ export default function HappyCard(props) {
                   alt="Bootstrap"
                   width="48"
                   height="48"
-                  class="rounded-circle border border-white bg-success"
+                  className="rounded-circle border border-white bg-success"
                 />
               )}
 
-              <span class="badge bg-primary m-1 bg-dark"></span>
+              <span className="badge bg-primary m-1 bg-dark"></span>
             </li>
             <li className="d-flex align-items-center me-3">
               <svg className="bi me-2" width="1em" height="1em"></svg>
@@ -53,7 +68,7 @@ export default function HappyCard(props) {
                   alt="Bootstrap"
                   width="48"
                   height="48"
-                  class="rounded-circle border border-white bg-light"
+                  className="rounded-circle border border-white bg-light"
                 />
               )}
             </li>
@@ -69,14 +84,13 @@ export default function HappyCard(props) {
             <li className="me-auto">
               <div>
                 <img
-                src={returnHappyIcon()}
-                  // src="./images/smile.svg"
+                  src={returnHappyIcon()}
                   alt="Bootstrap"
                   width="48"
                   height="48"
-                  class="rounded-circle border border-white bg-light"
+                  className="rounded-circle border border-white bg-light"
                 />
-                <span class="badge bg-dark">
+                <span className="badge bg-dark">
                   {props.happyRecord.happyScore}
                 </span>
               </div>
@@ -90,9 +104,9 @@ export default function HappyCard(props) {
                   alt="Bootstrap"
                   width="48"
                   height="48"
-                  class="rounded-circle border border-white bg-success"
+                  className={returnSleepColor()}
                 />
-                <span class="badge bg-dark">
+                <span className="badge bg-dark">
                   {props.happyRecord.sleepHours}
                 </span>
               </div>
