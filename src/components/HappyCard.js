@@ -6,7 +6,24 @@ var backgoundStyle = {
 };
 
 export default function HappyCard(props) {
-  console.log("THIS is a Prop ", props);
+  const returnHappyIcon = () => {
+    const score = props.happyRecord.happyScore;
+    switch (true) {
+      case score === 1:
+        return "./images/faces/1-sad.svg";
+      case score === 2:
+        return "./images/faces/2-down.svg";
+      case score === 3:
+        return "./images/faces/3-meh.svg";
+      case score === 4:
+        return "./images/faces/4-smile.svg";
+      case score === 5:
+        return "./images/faces/5-happy.svg";
+      default:
+        return "none";
+    }
+  };
+
   return (
     <div className="col m-5">
       <div
@@ -30,14 +47,15 @@ export default function HappyCard(props) {
             </li>
             <li className="d-flex align-items-center me-3">
               <svg className="bi me-2" width="1em" height="1em"></svg>
-             {props.happyRecord.kindness &&   <img
-                src="./images/thankful-hands.svg"
-                alt="Bootstrap"
-                width="48"
-                height="48"
-                class="rounded-circle border border-white bg-light"
-              />}
-            
+              {props.happyRecord.kindness && (
+                <img
+                  src="./images/thankful-hands.svg"
+                  alt="Bootstrap"
+                  width="48"
+                  height="48"
+                  class="rounded-circle border border-white bg-light"
+                />
+              )}
             </li>
           </ul>
           <h2 className="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
@@ -51,7 +69,8 @@ export default function HappyCard(props) {
             <li className="me-auto">
               <div>
                 <img
-                  src="./images/smile.svg"
+                src={returnHappyIcon()}
+                  // src="./images/smile.svg"
                   alt="Bootstrap"
                   width="48"
                   height="48"
