@@ -23,15 +23,15 @@ export default function Dashboard() {
       .then((response) => {
         console.log("this is the records ", response.data);
         sethappyRecords(response.data);
-        
+
         // get Happy Photos
         api
-          .getPhotos("happy")
+          .getPhotos("bright")
           .then((response) => {
             setHappyPhotos(response.data.results);
             // get Sad Photos
             api
-              .getPhotos("sad")
+              .getPhotos("dark")
               .then((response) => {
                 setSadPhotos(response.data.results);
                 setLoading(false);
