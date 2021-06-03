@@ -1,11 +1,47 @@
-import React from "react";
-
-var backgoundStyle = {
-  color: "white",
-  backgroundImage: 'url("./images/test-image.jpg")',
-};
+import React, { useEffect } from "react";
 
 export default function HappyCard(props) {
+  // set background
+
+  const setBackgroundPhoto = () => {
+    const score = props.happyRecord.happyScore;
+    switch (true) {
+      case score === 1:
+        return {
+          color: "white",
+          opacity: 0.5,
+          backgroundImage: `url(${selectRandomPhoto(props.sadPhotos)})`,
+        };
+      case score === 2:
+        return {
+          color: "white",
+          opacity: 0.5,
+          backgroundImage: `url(${selectRandomPhoto(props.sadPhotos)})`,
+        };
+      case score === 3:
+        return {
+          color: "white",
+          opacity: 0.5,
+          // backgroundImage: `url(${selectRandomPhoto(props.sadPhotos)})`,
+        };
+      case score === 4:
+        return {
+          color: "white",
+          opacity: 0.5,
+          backgroundImage: `url(${selectRandomPhoto(props.happyPhotos)})`,
+        };
+      case score === 5:
+        return {
+          color: "white",
+          opacity: 0.5,
+          backgroundImage: `url(${selectRandomPhoto(props.happyPhotos)})`,
+        };
+      default:
+        return "none";
+    }
+  };
+
+  // determine icon for happy face
   const returnHappyIcon = () => {
     const score = props.happyRecord.happyScore;
     switch (true) {
@@ -23,7 +59,7 @@ export default function HappyCard(props) {
         return "none";
     }
   };
-
+  // determine the color for the sleep icon based on its value
   const returnSleepColor = () => {
     const hours = props.happyRecord.sleepHours;
     switch (true) {
@@ -38,27 +74,33 @@ export default function HappyCard(props) {
     }
   };
 
+  // determine the color for the excercise icon based on its value
   const returnExceriseColor = () => {
     const level = props.happyRecord.exerciseLevel;
     switch (true) {
-      case (level === "low"):
+      case level === "low":
         return "rounded-circle border border-white bg-danger";
-      case (level === "med"):
+      case level === "med":
         return "rounded-circle border border-white bg-warning";
-      case (level === "high"):
+      case level === "high":
         return "rounded-circle border border-white bg-success";
-        case (level === "none"):
-          return "rounded-circle border border-white bg-light";
+      case level === "none":
+        return "rounded-circle border border-white bg-light";
       default:
         return "rounded-circle border border-white bg-primary";
     }
+  };
+
+  const selectRandomPhoto = (photoArray) => {
+    const index = Math.floor(Math.random() * (0 + photoArray.length - 1)) + 1;
+    return photoArray[index].urls.regular;
   };
 
   return (
     <div className="col m-5">
       <div
         className="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
-        // style={backgoundStyle}
+        style={setBackgroundPhoto()}
       >
         <div className="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
           <ul className="d-flex list-unstyled mt-auto">
