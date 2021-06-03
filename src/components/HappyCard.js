@@ -9,31 +9,31 @@ export default function HappyCard(props) {
       case score === 1:
         return {
           color: "white",
-          opacity: 0.5,
+
           backgroundImage: `url(${selectRandomPhoto(props.sadPhotos)})`,
         };
       case score === 2:
         return {
           color: "white",
-          opacity: 0.5,
+
           backgroundImage: `url(${selectRandomPhoto(props.sadPhotos)})`,
         };
       case score === 3:
         return {
           color: "white",
-          opacity: 0.5,
+
           // backgroundImage: `url(${selectRandomPhoto(props.sadPhotos)})`,
         };
       case score === 4:
         return {
           color: "white",
-          opacity: 0.5,
+
           backgroundImage: `url(${selectRandomPhoto(props.happyPhotos)})`,
         };
       case score === 5:
         return {
           color: "white",
-          opacity: 0.5,
+
           backgroundImage: `url(${selectRandomPhoto(props.happyPhotos)})`,
         };
       default:
