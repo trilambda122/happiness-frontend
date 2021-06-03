@@ -22,7 +22,7 @@ export default function HappyCard(props) {
         return {
           color: "white",
 
-          // backgroundImage: `url(${selectRandomPhoto(props.sadPhotos)})`,
+          backgroundImage: `url(${selectRandomPhoto(props.greyPhotos)})`,
         };
       case score === 4:
         return {

@@ -7,11 +7,11 @@ import AddRecord from "../components/AddRecord";
 // import SoundtrackContext from '../context/soundtrackContext'
 // const {setSearchResultsFromAPI} = useContext(SoundtrackContext)
 export default function Dashboard() {
-  //   const {setHappyRecords} = useContext(HappyContext)
+  // SET STATE VARS
   const [happyRecords, sethappyRecords] = useState();
   const [happyPhotos, setHappyPhotos] = useState();
   const [sadPhotos, setSadPhotos] = useState();
-
+  const [greyPhotos, setGreyPhotos] = useState();
   const [hasError, setHasError] = useState(false);
   const [loading, setLoading] = useState(false);
   useEffect(async () => {
@@ -34,7 +34,17 @@ export default function Dashboard() {
               .getPhotos("dark")
               .then((response) => {
                 setSadPhotos(response.data.results);
-                setLoading(false);
+                // get grey photos
+                api
+                  .getPhotos("grey")
+                  .then((response) => {
+                    setGreyPhotos(response.data.results);
+                    setLoading(false);
+                  })
+                  .catch((error) => {
+                    setHasError(true);
+                    console.log(error);
+                  });
               })
               .catch((error) => {
                 setHasError(true);
@@ -73,6 +83,7 @@ export default function Dashboard() {
               happyRecord={item}
               happyPhotos={happyPhotos}
               sadPhotos={sadPhotos}
+              greyPhotos={greyPhotos}
             ></HappyCard>
           );
         })
