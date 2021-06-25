@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
 import utils from "../utils/api";
 export default function AddRecordForm() {
+  const history = useHistory();
+
   //Set State
   const [exerciseToogle, setExerciseToogle] = useState(false);
   const [kindnessToogle, setKindnessToogle] = useState(false);
@@ -43,6 +46,7 @@ export default function AddRecordForm() {
       gratitudeNote: gratitudeNote,
     };
     utils.addRecord(object)
+   history.push('/submitted')
   };
   // range bars
   const rangeBarmove = () => {

@@ -141,6 +141,7 @@ export default function HappyCard(props) {
           <h2 className="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
             {props.happyRecord.gratitudeNote}
           </h2>
+      
           <ul className="d-flex list-unstyled mt-auto">
             <li className="me-auto">
               <div>
