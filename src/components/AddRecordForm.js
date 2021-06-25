@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
-
+import utils from "../utils/api";
 export default function AddRecordForm() {
   //Set State
-  const [exerciseToogle, setExerciseToogle] = useState();
-  const [kindnessToogle, setKindnessToogle] = useState();
+  const [exerciseToogle, setExerciseToogle] = useState(false);
+  const [kindnessToogle, setKindnessToogle] = useState(false);
 
   // Functions
 
@@ -12,6 +12,38 @@ export default function AddRecordForm() {
   const toogleExercise = () => setExerciseToogle(!exerciseToogle);
   const toogleKindness = () => setKindnessToogle(!kindnessToogle);
 
+  const onSubmit = (event) => {
+    event.preventDefault();
+    let exerciseLevel;
+    // assign exercise level from the radio buttons
+    const radios = document.getElementsByName("exercise-level");
+    for (var radio of radios) {
+      if (radio.checked) {
+        exerciseLevel = radio.value;
+        console.log("radio-->", radio.value);
+      }
+    }
+
+    const happyScore = document.getElementById("happy-score").value;
+    const sleepHours = document.getElementById("sleep-hours").value;
+    const exercise = exerciseToogle;
+    const kindness = kindnessToogle;
+    const kindnessNote = document.getElementById("kindess-note")
+      ? document.getElementById("kindess-note").value
+      : "";
+    const gratitudeNote = document.getElementById("grad-note").value;
+// create object 
+    const object = {
+      happyScore: happyScore,
+      sleepHours: sleepHours,
+      exercise: exercise,
+      exerciseLevel : exerciseLevel,
+      kindness: kindness,
+      kindnessNote: kindnessNote,
+      gratitudeNote: gratitudeNote,
+    };
+    console.log("OBJECT---->", object);
+  };
   // range bars
   const rangeBarmove = () => {
     const barValue = document.getElementById("sleep-hours").value;
@@ -25,11 +57,16 @@ export default function AddRecordForm() {
 
   return (
     <div>
-      <form className="needs-validation" id="happyForm" novalidate>
+      <form
+        className="needs-validation"
+        id="happyForm"
+        onSubmit={onSubmit}
+        novalidate
+      >
         <div className="row g-3">
           {/* Range bars */}
           <div className="col-sm-6">
-            <label for="happy-score" className="form-label">
+            <label htmlFor="happy-score" className="form-label">
               Happy Score
             </label>
 
@@ -48,7 +85,7 @@ export default function AddRecordForm() {
           </div>
 
           <div className="col-sm-6">
-            <label for="sleep-hours" className="form-label">
+            <label htmlFor="sleep-hours" className="form-label">
               Sleep Hours
             </label>
 
@@ -78,17 +115,17 @@ export default function AddRecordForm() {
               <p className="form-label">Exercise</p>
             </div>
             {exerciseToogle ? (
-              <div className='col-sm-10 m-3'>
-                <label className="form-check-label me-3" >Exercise Level</label>
+              <div className="col-sm-10 m-3">
+                <label className="form-check-label me-3">Exercise Level</label>
                 <div className="form-check form-check-inline">
                   <input
                     className="form-check-input"
                     type="radio"
-                    name="inlineRadioOptions"
+                    name="exercise-level"
                     id="low"
                     value="low"
                   />
-                  <label className="form-check-label" for="inlineRadio1">
+                  <label className="form-check-label" htmlFor="inlineRadio1">
                     Low
                   </label>
                 </div>
@@ -96,11 +133,11 @@ export default function AddRecordForm() {
                   <input
                     className="form-check-input"
                     type="radio"
-                    name="inlineRadioOptions"
+                    name="exercise-level"
                     id="med"
                     value="med"
                   />
-                  <label className="form-check-label" for="inlineRadio2">
+                  <label className="form-check-label" htmlFor="inlineRadio2">
                     Med
                   </label>
                 </div>
@@ -108,12 +145,11 @@ export default function AddRecordForm() {
                   <input
                     className="form-check-input"
                     type="radio"
-                    name="inlineRadioOptions"
+                    name="exercise-level"
                     id="high"
                     value="high"
-                    
                   />
-                  <label className="form-check-label" for="inlineRadio3">
+                  <label className="form-check-label" htmlFor="inlineRadio3">
                     High
                   </label>
                 </div>
@@ -135,12 +171,14 @@ export default function AddRecordForm() {
           {kindnessToogle ? (
             <div className="row g-3">
               <hr className="my-4" />
-              <label for="gratNote" className="form-label">
+              <label htmlFor="gratNote" className="form-label">
                 Kindness Note
               </label>
-              <textarea name="gratNote" form="happyForm">
-                Enter text here...
-              </textarea>
+              <textarea
+                id="kindess-note"
+                name="kindess-note"
+                form="happyForm"
+              ></textarea>
             </div>
           ) : (
             <h1></h1>
@@ -148,12 +186,14 @@ export default function AddRecordForm() {
 
           <hr className="my-4" />
           <div className="row g-3">
-            <label for="gratNote" className="form-label">
+            <label htmlhtmlFor="gratNote" className="form-label">
               Gratitude Note
             </label>
-            <textarea name="gratNote" form="happyForm">
-              Enter text here...
-            </textarea>
+            <textarea
+              id="grad-note"
+              name="grat-note"
+              form="happyForm"
+            ></textarea>
           </div>
           <hr className="my-4" />
           <button className=" col-sm-4  btn btn-primary btn-lg" type="submit">
