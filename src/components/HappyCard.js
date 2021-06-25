@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 
 export default function HappyCard(props) {
-  const date = new Date(props.happyRecord.date)
+  console.log(props)
+  const date = new Date(props.happyRecord.date);
   // set background
   const setBackgroundPhoto = () => {
     const score = props.happyRecord.happyScore;
@@ -103,9 +104,9 @@ export default function HappyCard(props) {
         style={setBackgroundPhoto()}
       >
         <div className="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-        <p className=" text-uppercase display-8   fw-bold">
-              {date.toDateString()}
-            </p>
+          <p className=" text-uppercase display-8   fw-bold">
+            {date.toDateString()}
+          </p>
           <ul className="d-flex list-unstyled mt-auto">
             <li className="me-auto">
               {props.happyRecord.exercise && (
@@ -120,7 +121,7 @@ export default function HappyCard(props) {
 
               <span className="badge bg-primary m-1 bg-dark"></span>
             </li>
-            
+
             <li className="d-flex align-items-center me-3">
               <svg className="bi me-2" width="1em" height="1em"></svg>
               {props.happyRecord.kindness && (
@@ -141,7 +142,22 @@ export default function HappyCard(props) {
           <h2 className="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
             {props.happyRecord.gratitudeNote}
           </h2>
-      
+          <hr />
+          {/* QUOTES */}
+          <blockquote className="blockquote text-right">
+            <p className="mb-3">
+          {props.happyRecord.quote.quote}
+            </p>
+            <footer className="blockquote-footer">
+            {props.happyRecord.quote.author}
+            </footer>
+            <cite title="Source Title">
+                Inspirational quotes provided by{" "}
+                <a href="https://zenquotes.io/" target="_blank">
+                  ZenQuotes API
+                </a>
+              </cite>
+          </blockquote>
           <ul className="d-flex list-unstyled mt-auto">
             <li className="me-auto">
               <div>
