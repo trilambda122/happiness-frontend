@@ -42,7 +42,7 @@ export default function AddRecordForm() {
       kindnessNote: kindnessNote,
       gratitudeNote: gratitudeNote,
     };
-    console.log("OBJECT---->", object);
+    utils.addRecord(object)
   };
   // range bars
   const rangeBarmove = () => {
