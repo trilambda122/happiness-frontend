@@ -6,6 +6,7 @@ import "./App.css";
 import Dashboard from "./components/Dashboard";
 import Unauthorized from "./components/Unauthorized";
 import AddRecord from "./components/AddRecord";
+import Submitted from "./components/Submitted";
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
           </Route>
           <Route exact path="/add">
             <AddRecord />
+          </Route>
+          <Route exact path="/submitted">
+            <Submitted />
           </Route>
           <Route exact path="/unauthorized">
             <Unauthorized />

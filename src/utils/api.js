@@ -34,5 +34,17 @@ export default {
         "Content-type": "Application/json",
       },
     })
+  },
+
+  addRecord: async function (record){
+    const url = "/happy";
+    return await axios.post(url, {
+      ...record,
+      headers: {
+        'Authorization': `Bearer ${token}` 
+      },
+      
+
+    });
   }
 };
