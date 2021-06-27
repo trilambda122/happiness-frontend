@@ -1,12 +1,19 @@
 import React, { useEffect } from "react";
 
 export default function HappyCard(props) {
-  console.log(props)
+  console.log("PROPS--->", props)
   const date = new Date(props.happyRecord.date);
   // set background
   const setBackgroundPhoto = () => {
     const score = props.happyRecord.happyScore;
     switch (true) {
+      case score === 0:
+        return {
+          color: "white",
+
+          backgroundImage: `url(${selectRandomPhoto(props.sadPhotos)})`,
+        };
+
       case score === 1:
         return {
           color: "white",
@@ -46,6 +53,8 @@ export default function HappyCard(props) {
   const returnHappyIcon = () => {
     const score = props.happyRecord.happyScore;
     switch (true) {
+      case score === 0:
+        return "./images/faces/1-sad.svg";
       case score === 1:
         return "./images/faces/1-sad.svg";
       case score === 2:
@@ -98,7 +107,7 @@ export default function HappyCard(props) {
   };
 
   return (
-    <div className="col m-5">
+    <div className="col m-10 mt-5">
       <div
         className="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
         style={setBackgroundPhoto()}

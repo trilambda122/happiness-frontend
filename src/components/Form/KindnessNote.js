@@ -2,8 +2,8 @@ import React from "react";
 
 export default function KindnessNote() {
   return (
-    <div class=" input-group">
-      <span class="btn btn-primary input-group-text">Enter Kindness</span>
+    <div className="text-start">
+      <label >Please type your note</label>
       <textarea
         class="form-control "
         id="kindess-note"

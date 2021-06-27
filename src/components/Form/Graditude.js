@@ -7,10 +7,13 @@ export default function Graditude() {
     document.getElementById("toogle-graditude").value = false;
   }, []);
 
-  const onToogle = ()=> setGraditudeToogle(!graditudeToogle)
+  const onToogle = ()=> {
+    document.getElementById("toogle-graditude").value=true
+    setGraditudeToogle(!graditudeToogle)
+  }
 
   return (
-    <div className="container">
+    <div className="">
       <div className="row g-3">
         <hr className="mt-5 me-5" />
         <div class="form-check form-switch col-2">

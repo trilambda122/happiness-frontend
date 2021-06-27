@@ -10,22 +10,22 @@ export default function Exercise() {
         document.getElementById("toogle-exercise").value=false
        },[]);
 
-       const onToogle = ()=> setExerciseToogle(!exerciseToogle)
+       const onToogle = ()=> {
+        document.getElementById("toogle-exercise").value=true
+        setExerciseToogle(!exerciseToogle)
+       }
 
   return (
-    <div className="container">
+    <div className="text-start">
       <div className="row g-3">
       <hr className="mt-5"/>
-            <div class="form-check form-switch col-2">
-              <input class="form-check-input" type="checkbox" onChange={onToogle} id="toogle-exercise"/>
-              <label class="form-check-label" htmlFor="toogle-exercise">Exercise</label>
+            <div className="form-check form-switch col-4">
+              <input className="form-check-input" type="checkbox" onChange={onToogle} id="toogle-exercise"/>
+              <label className="form-check-label" htmlFor="toogle-exercise">Exercise</label>
             </div>
             {/* low med high exercise level checkboxes */}
           
             {exerciseToogle ?  <ExerciseLevel/> : <div></div>}
-           
-  
-
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import Exercise from "./Form/Exercise";
 import Kindness from "./Form/Kindness";
 import Graditude from "./Form/Graditude";
 export default function AddRecordForm() {
+  
   return (
     <div>
       <RangeBars />

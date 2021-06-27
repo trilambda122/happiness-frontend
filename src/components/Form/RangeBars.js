@@ -5,7 +5,7 @@ export default function RangeBars() {
   // set the bar values to zero af first
     useEffect(() => {
   
-       document.getElementById("happy-score").value=0
+       document.getElementById("happy-score").value=1
        document.getElementById("sleep-hours").value=0;
       },[]);
 
@@ -20,7 +20,7 @@ export default function RangeBars() {
   };
 
   return (
-    <div className="container">
+    <div className="">
       <div className="row g-3">
         <div className="col-6">
           <label htmlFor="happy-score" className="form-label">
@@ -31,12 +31,12 @@ export default function RangeBars() {
             type="range"
             className="form-range"
             id="happy-score"
-            min="0"
+            min="1"
             max="5"
             step="1"
           />
           <span id="happy-score-value" className="badge bg-primary">
-            0
+            1
           </span>
         </div>
 

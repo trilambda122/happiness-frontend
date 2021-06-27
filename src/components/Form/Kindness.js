@@ -7,9 +7,12 @@ export default function Kindness() {
         document.getElementById("toogle-kindness").value=false
     },[])
 
-    const onToogle = ()=> setKindnessToogle(!kindnessToogle)
+    const onToogle = ()=> {
+      document.getElementById("toogle-kindness").value=true
+      setKindnessToogle(!kindnessToogle)
+    }
   return (
-    <div className="container">
+    <div className="">
       <div className="row g-3">
         <hr className="mt-5 me-5" />
         <div class="form-check form-switch col-2">
