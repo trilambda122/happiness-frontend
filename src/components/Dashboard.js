@@ -62,10 +62,6 @@ export default function Dashboard() {
       });
   }, []);
 
-  // const selectRandomPhoto = (photoArray) => {
-  //   const index = Math.floor(Math.random() * (0 + photoArray.length - 1)) + 1;
-  //   return photoArray[index].urls.regular;
-  // };
   return (
     <div>
       <h1>DASHBOARD</h1>
