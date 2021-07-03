@@ -116,6 +116,9 @@ export default function HappyCard(props) {
           <p className=" text-uppercase display-8   fw-bold">
             {date.toDateString()}
           </p>
+          <footer className="blockquote">
+            {props.user}
+            </footer>
           <ul className="d-flex list-unstyled mt-auto">
             <li className="me-auto">
               {props.happyRecord.exercise && (

@@ -6,6 +6,13 @@ import AddRecord from "../components/AddRecord";
 
 // import SoundtrackContext from '../context/soundtrackContext'
 // const {setSearchResultsFromAPI} = useContext(SoundtrackContext)
+
+// let email = '';
+// if (localStorage && localStorage.getItem('email')) {
+//    email = JSON.parse(localStorage.getItem('email'));
+//   }
+//  this.setState({email: email})
+// }
 export default function Dashboard() {
   // SET STATE VARS
   const [happyRecords, sethappyRecords] = useState();
@@ -14,7 +21,13 @@ export default function Dashboard() {
   const [greyPhotos, setGreyPhotos] = useState();
   const [hasError, setHasError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [user,setUser] = useState('')
   useEffect(async () => {
+    let email = ''
+    if (localStorage && localStorage.getItem('email')) {
+      email = JSON.parse(localStorage.getItem('email'))
+    }
+    setUser(email)
     // Update the document title using the browser API
     setLoading(true);
     // get all the records from database
@@ -80,6 +93,7 @@ export default function Dashboard() {
               happyPhotos={happyPhotos}
               sadPhotos={sadPhotos}
               greyPhotos={greyPhotos}
+              user={user}
             ></HappyCard>
           );
         })
