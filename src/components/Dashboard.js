@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import api from "../utils/api";
 import HappyCard from "../components/HappyCard";
 import AddRecord from "../components/AddRecord";
@@ -6,6 +6,13 @@ import AddRecord from "../components/AddRecord";
 
 // import SoundtrackContext from '../context/soundtrackContext'
 // const {setSearchResultsFromAPI} = useContext(SoundtrackContext)
+
+// let email = '';
+// if (localStorage && localStorage.getItem('email')) {
+//    email = JSON.parse(localStorage.getItem('email'));
+//   }
+//  this.setState({email: email})
+// }
 export default function Dashboard() {
   // SET STATE VARS
   const [happyRecords, sethappyRecords] = useState();
@@ -14,14 +21,23 @@ export default function Dashboard() {
   const [greyPhotos, setGreyPhotos] = useState();
   const [hasError, setHasError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [user,setUser] = useState('')
   useEffect(async () => {
+    let email = ''
+    if (localStorage && localStorage.getItem('email')) {
+      email = JSON.parse(localStorage.getItem('email'))
+    }
+    let userId=''
+    if (localStorage && localStorage.getItem('userId')) {
+      userId = JSON.parse(localStorage.getItem('userId'))
+    }
+    setUser(email)
     // Update the document title using the browser API
     setLoading(true);
     // get all the records from database
     api
-      .getAllHappies()
+      .getAllHappies(userId)
       .then((response) => {
-        console.log("this is the records ", response.data);
         sethappyRecords(response.data);
 
         // get Happy Photos
@@ -80,6 +96,7 @@ export default function Dashboard() {
               happyPhotos={happyPhotos}
               sadPhotos={sadPhotos}
               greyPhotos={greyPhotos}
+              user={user}
             ></HappyCard>
           );
         })

@@ -12,7 +12,6 @@ export default function AddRecord() {
   };
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log("event-->", event.target);
     const happyScore = document.getElementById("happy-score").value;
     const sleepHours = document.getElementById("sleep-hours").value;
     const exercise = document.getElementById("toogle-exercise").value;
@@ -28,14 +27,16 @@ export default function AddRecord() {
     // assign exercise level from the radio buttons
 
     const radios = document.getElementsByName("exercise-radio-btns");
-    console.log("RADIO--->", radios);
+   
     for (var radio of radios) {
       if (radio.checked) {
         exerciseLevel = radio.value;
-        console.log("radio-->", radio.value);
       }
     }
-
+    let userId=''
+    if (localStorage && localStorage.getItem('userId')) {
+      userId = JSON.parse(localStorage.getItem('userId'))
+    }
     const object = {
       happyScore: happyScore,
       sleepHours: sleepHours,
@@ -45,8 +46,8 @@ export default function AddRecord() {
       kindnessNote: kindnessNote,
       graditude: graditude,
       gratitudeNote: graditudeNote,
+      user: userId
     };
-    console.log("OBJECT-->", object);
     utils.addRecord(object);
     history.push('/submitted')
   };
@@ -57,16 +58,16 @@ export default function AddRecord() {
         className="needs-validation"
         id="happyForm"
         onSubmit={onSubmit}
-        novalidate
+        noValidate
       >
         <div className="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg">
           <div className="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
             <ul className="d-flex list-unstyled mt-auto">
               <li className="me-auto">
                 {expanded ? (
-                  <i class="far fa-minus-square fa-3x" onClick={onClick}></i>
+                  <i className="far fa-minus-square fa-3x" onClick={onClick}></i>
                 ) : (
-                  <i class="far fa-plus-square fa-3x " onClick={onClick}></i>
+                  <i className="far fa-plus-square fa-3x " onClick={onClick}></i>
                 )}
               </li>
             </ul>

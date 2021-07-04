@@ -8,7 +8,7 @@ export default function Submitted() {
     return (
         <div>
             <h1>SUBMITTED!</h1>
-            <button type="button" onClick={handleClick} class="btn btn-primary">RETURN TO DASHBOARD</button>
+            <button type="button" onClick={handleClick} className="btn btn-primary">RETURN TO DASHBOARD</button>
         </div>
     )
 }

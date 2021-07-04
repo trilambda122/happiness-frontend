@@ -65,7 +65,7 @@ export default function AddRecordForm() {
         className="needs-validation"
         id="happyForm"
         onSubmit={onSubmit}
-        novalidate
+        noValidate
       >
         <div className="row g-3">
           {/* Range bars */}

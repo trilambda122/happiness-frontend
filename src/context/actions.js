@@ -1,1 +1,0 @@
-export const SET_HAPPY_RECORDS = 'SET_HAPPY_RECORDS'

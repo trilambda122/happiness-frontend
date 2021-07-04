@@ -15,14 +15,14 @@ export default function Kindness() {
     <div className="">
       <div className="row g-3">
         <hr className="mt-5 me-5" />
-        <div class="form-check form-switch col-2">
+        <div className="form-check form-switch col-2">
           <input
-            class="form-check-input"
+            className="form-check-input"
             type="checkbox"
             onChange={onToogle}
             id="toogle-kindness"
           />
-          <label class="form-check-label" htmlFor="toogle-kindness">
+          <label className="form-check-label" htmlFor="toogle-kindness">
             Random Kindenss
           </label>
         </div>

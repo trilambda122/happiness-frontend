@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 
 export default function HappyCard(props) {
-  console.log("PROPS--->", props)
   const date = new Date(props.happyRecord.date);
   // set background
   const setBackgroundPhoto = () => {
@@ -116,6 +115,9 @@ export default function HappyCard(props) {
           <p className=" text-uppercase display-8   fw-bold">
             {date.toDateString()}
           </p>
+          <footer className="blockquote">
+            {props.user}
+            </footer>
           <ul className="d-flex list-unstyled mt-auto">
             <li className="me-auto">
               {props.happyRecord.exercise && (

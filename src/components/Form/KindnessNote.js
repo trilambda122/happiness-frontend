@@ -5,7 +5,7 @@ export default function KindnessNote() {
     <div className="text-start">
       <label >Please type your note</label>
       <textarea
-        class="form-control "
+        className="form-control "
         id="kindess-note"
         name="kindess-note"
         form="happyForm"
