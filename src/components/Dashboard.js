@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import api from "../utils/api";
 import HappyCard from "../components/HappyCard";
 import AddRecord from "../components/AddRecord";
@@ -27,14 +27,17 @@ export default function Dashboard() {
     if (localStorage && localStorage.getItem('email')) {
       email = JSON.parse(localStorage.getItem('email'))
     }
+    let userId=''
+    if (localStorage && localStorage.getItem('userId')) {
+      userId = JSON.parse(localStorage.getItem('userId'))
+    }
     setUser(email)
     // Update the document title using the browser API
     setLoading(true);
     // get all the records from database
     api
-      .getAllHappies()
+      .getAllHappies(userId)
       .then((response) => {
-        console.log("this is the records ", response.data);
         sethappyRecords(response.data);
 
         // get Happy Photos

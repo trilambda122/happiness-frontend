@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 
 export default function HappyCard(props) {
-  console.log("PROPS--->", props)
   const date = new Date(props.happyRecord.date);
   // set background
   const setBackgroundPhoto = () => {

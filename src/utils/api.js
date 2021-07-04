@@ -1,4 +1,4 @@
-const https = require("https");
+// const https = require("https");
 const axios = require("axios");
 require('dotenv').config();
 
@@ -16,9 +16,8 @@ export default {
     //   search: queryStr,
     // });
   },
-  getAllHappies: async function () {
-    const url = "/happy/";
-
+  getAllHappies: async function (userId) {
+    const url = `/happy/user/${userId}`;
     return await axios.get(url, {
       headers: {
         "Access-Control-Allow-Origin": "*",
