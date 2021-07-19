@@ -80,7 +80,7 @@ export default function Dashboard() {
 
   return (
     <div>
-      <h1>DASHBOARD</h1>
+      <h1>FEED</h1>
       <AddRecord></AddRecord>
       {loading ? (
         <div>Loading...</div>

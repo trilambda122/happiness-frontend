@@ -5,6 +5,7 @@ import Dashboard from "./components/Dashboard";
 import Unauthorized from "./components/Unauthorized";
 import AddRecord from "./components/AddRecord";
 import Submitted from "./components/Submitted";
+import SignUp from "./components/SignUp";
 
 function App() {
   return (
@@ -12,6 +13,9 @@ function App() {
       <Switch>
         <Route exact path="/">
           <Login />
+        </Route>
+        <Route exact path="/signup">
+          <SignUp />
         </Route>
         <Route exact path="/dashboard">
           <Dashboard />

@@ -16,14 +16,11 @@ export default function Login() {
       
     };
 
-    api.submitLoginCreds(creds).then((res) => {
-      if (res.status === 200) {
-        localStorage.setItem('email',
-        JSON.stringify(creds.email));
-        localStorage.setItem('userId',
-        JSON.stringify(res.data.userId));
-        history.push("/dashboard");
-      }
+    api.submitSignUpCreds(creds).then((res) => {
+      console.log("RES->",res)
+        if (res.status === 201){
+           history.push("/");
+        }
     }).catch((error)=>{
       history.push("/unauthorized");
       console.log(error.response)
@@ -42,7 +39,7 @@ export default function Login() {
             width="72"
             height="57"
           />
-          <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
+          <h1 className="h3 mb-3 fw-normal">Please sign up for happiness</h1>
 
           <div className="form-floating">
             <input
@@ -66,10 +63,8 @@ export default function Login() {
           </div>
 
           <button className="w-100 btn btn-lg btn-primary" type="submit">
-            Sign in
+            Sign up!
           </button>
-          <p>Dont have an account?</p>
-      <a href="/signup">click here to sign-up</a>
           <p className="mt-5 mb-3 text-muted">&copy; Happiness 2021</p>
         </form>
       </main>
